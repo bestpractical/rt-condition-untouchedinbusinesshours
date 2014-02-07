@@ -19,7 +19,7 @@ name: RT-Condition-UntouchedInBusinessHours
 no_index:
   directory:
     - inc
-    - t
+    - xt
 requires:
   Business::Hours: 0
 resources:
