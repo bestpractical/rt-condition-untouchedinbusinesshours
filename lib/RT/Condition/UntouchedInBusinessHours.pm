@@ -105,7 +105,7 @@ SUCH DAMAGES.
 
 =cut
 
-use base 'RT::Condition::Generic';
+use base 'RT::Condition';
 
 sub IsApplicable {
     my $self = shift;
