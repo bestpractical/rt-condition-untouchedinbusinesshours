@@ -9,7 +9,6 @@ use strict;
 
 RT::Condition::UntouchedInBusinessHours - Checks if a Ticket has been updated in the given business hours
 
-
 =head1 SYNOPSIS
 
 This Condition is meant to be used with the rt-crontool, so to escalate the priority
@@ -29,6 +28,38 @@ or to generate mail
     --template 7
 
 
+=head1 INSTALLATION
+
+=over
+
+=item perl Makefile.PL
+
+=item make
+
+=item make install
+
+May need root permissions
+
+=item Edit your /opt/rt4/etc/RT_SiteConfig.pm
+
+If you are using RT 4.2 or greater, add this line:
+
+    Plugin('RT::Condition::UntouchedInBusinessHours');
+
+For earlier releases of RT 4, add this line:
+
+    Set(@Plugins, qw(RT::Condition::UntouchedInBusinessHours));
+
+or add C<RT::Condition::UntouchedInBusinessHours> to your existing C<@Plugins> line.
+
+=item Clear your mason cache
+
+    rm -rf /opt/rt4/var/mason_data/obj
+
+=item Restart your webserver
+
+=back
+
 =head1 BUGS AND LIMITATIONS
 
 Please report any bugs or feature requests to
@@ -43,7 +74,7 @@ Kevin Falcone  C<< <falcone@bestpractical.com> >>
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2008, Best Practical Solutions, LLC.  All rights reserved.
+Copyright (c) 2008-2014, Best Practical Solutions, LLC.  All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the terms of version 2 of the GNU General Public License.

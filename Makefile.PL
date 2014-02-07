@@ -1,8 +1,9 @@
 use inc::Module::Install;
 
 RTx     'RT-Condition-UntouchedInBusinessHours';
-all_from 'lib/RT/Condition/UntouchedInBusinessHours.pm';
 author   'Kevin Falcone <falcone@bestpractical.com>';
+all_from 'lib/RT/Condition/UntouchedInBusinessHours.pm';
+readme_from 'lib/RT/Condition/UntouchedInBusinessHours.pm';
 
 build_requires 'Test::More';
 

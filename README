@@ -1,19 +1,82 @@
-RT-Condition-UntouchedInBusinessHours version 0.0.1
+NAME
+    RT::Condition::UntouchedInBusinessHours - Checks if a Ticket has been
+    updated in the given business hours
 
-How to install:
+SYNOPSIS
+    This Condition is meant to be used with the rt-crontool, so to escalate
+    the priority of tickets in a given queue that haven't been updated in 3
+    hours, you would do
 
-1. perl Makefile.PL
-2. make
-3. make install (may need root permissions)
-4. Edit your /opt/rt3/etc/RT_SiteConfig.pm 
-    Set(@Plugins, qw(RT::Condition::UntouchedInBusinessHours));
-5. rm -rf /opt/rt3/var/mason_data/obj
-6. Restart your webserver
+     bin/rt-crontool \
+        --search RT::Search::ActiveTicketsInQueue --search-arg general \
+        --condition RT::Condition::UntouchedInBusinessHours --condition-arg 3 \
+        --action RT::Action::EscalatePriority
 
-COPYRIGHT AND LICENCE
+    or to generate mail
 
-Copyright (C) 2008, Best Practical Solutions LLC.
+     bin/rt-crontool \
+        --search RT::Search::ActiveTicketsInQueue --search-arg general \
+        --condition RT::Condition::UntouchedInBusinessHours --condition-arg 3 \
+        --action RT::Action::Notify \
+        --template 7
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+INSTALLATION
+    perl Makefile.PL
+    make
+    make install
+        May need root permissions
+
+    Edit your /opt/rt4/etc/RT_SiteConfig.pm
+        If you are using RT 4.2 or greater, add this line:
+
+            Plugin('RT::Condition::UntouchedInBusinessHours');
+
+        For earlier releases of RT 4, add this line:
+
+            Set(@Plugins, qw(RT::Condition::UntouchedInBusinessHours));
+
+        or add "RT::Condition::UntouchedInBusinessHours" to your existing
+        @Plugins line.
+
+    Clear your mason cache
+            rm -rf /opt/rt4/var/mason_data/obj
+
+    Restart your webserver
+
+BUGS AND LIMITATIONS
+    Please report any bugs or feature requests to
+    "bug-rt-condition-untouchedinbusinesshours@rt.cpan.org", or through the
+    web interface at <http://rt.cpan.org>.
+
+AUTHOR
+    Kevin Falcone "<falcone@bestpractical.com>"
+
+LICENCE AND COPYRIGHT
+    Copyright (c) 2008-2014, Best Practical Solutions, LLC. All rights
+    reserved.
+
+    This module is free software; you can redistribute it and/or modify it
+    under the terms of version 2 of the GNU General Public License.
+
+DISCLAIMER OF WARRANTY
+    BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+    FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
+    OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
+    PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+    EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
+    ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
+    YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
+    NECESSARY SERVICING, REPAIR, OR CORRECTION.
+
+    IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+    WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+    REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE LIABLE
+    TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL, OR
+    CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
+    SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+    RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
+    FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
+    SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+    DAMAGES.
 
