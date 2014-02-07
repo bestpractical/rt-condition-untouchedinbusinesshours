@@ -1,24 +1,27 @@
---- 
-abstract: Checks if a Ticket has been updated in the given business hours
-author: 
-  - Kevin Falcone <falcone@bestpractical.com>
-build_requires: 
+---
+abstract: 'Checks if a Ticket has been updated in the given business hours'
+author:
+  - 'Kevin Falcone  C<< <falcone@bestpractical.com> >>'
+  - 'Kevin Falcone <falcone@bestpractical.com>'
+build_requires:
+  ExtUtils::MakeMaker: 6.36
   Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.36
 distribution_type: module
-generated_by: Module::Install version 0.70
-license: unknown
-meta-spec: 
-  url: http://module-build.sourceforge.net/META-spec-v1.3.html
-  version: 1.3
+dynamic_config: 1
+generated_by: 'Module::Install version 1.06'
+license: gpl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
 name: RT-Condition-UntouchedInBusinessHours
-no_index: 
-  directory: 
-    - etc
-    - html
-    - po
-    - var
+no_index:
+  directory:
     - inc
     - t
-requires: 
+requires:
   Business::Hours: 0
+resources:
+  license: http://opensource.org/licenses/gpl-license.php
 version: 0.01
