@@ -60,6 +60,13 @@ or add C<RT::Condition::UntouchedInBusinessHours> to your existing C<@Plugins> l
 
 =back
 
+=head1 CONFIGURATION
+
+Reads from the C<%ServiceBusinessHours> as used by L<RT::Extension::SLA>.
+
+At this time, reads only from the Default setting. Could learn to read
+from other configurations with minimal Argument changing.
+
 =head1 BUGS AND LIMITATIONS
 
 Please report any bugs or feature requests to
